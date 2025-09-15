@@ -110,7 +110,10 @@
   <!-- Text chúc mừng -->
   <div id="birthday-text" class="birthday-text hidden"></div>
 
-  <iframe id="bg-audio" width="0" height="0" src="" allow="autoplay" style="display:none;"></iframe>
+  <!-- Thay iframe bằng audio -->
+  <audio id="bg-audio">
+    <source src="happy.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     const box = document.getElementById('box');
@@ -136,7 +139,9 @@
         if (time >= 0) {
           countdown.textContent = time;
           if (time === 3) {
-            document.getElementById('bg-audio').src = "https://www.youtube.com/embed/CGfM-PN3qcs?autoplay=1";
+            // Phát nhạc khi đếm ngược còn 3
+            const audio = document.getElementById('bg-audio');
+            audio.play().catch(err => console.log("Không phát được nhạc:", err));
           }
         }
         if (time === 0) {
@@ -240,4 +245,3 @@
   </script>
 </body>
 </html>
-
